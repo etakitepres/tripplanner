@@ -22,7 +22,7 @@ app.set('view engine', 'html');
 app.engine('html', swig.renderFile);
 
 // uncomment after placing your favicon in /public
-app.use(favicon());
+//app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
