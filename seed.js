@@ -5,7 +5,7 @@ models = require('./models');
 var Place = models.Place,
     Hotel = models.Hotel,
     Restaurant = models.Restaurant,
-    ThingsToDo = models.ThingsToDo;
+    Activity = models.Activity;
 
 var mongoose = require('mongoose');
 console.log("Inserting data");
@@ -105,49 +105,49 @@ Restaurant.create({name: "Xe Lua", place: [place], cuisine: "Vietnamese", price:
 
 
 var place = new Place({address: "133 Canal St", city: "New York", state: "NY", phone: "123-456-7890", location: [40.716291, -73.995315]});
-ThingsToDo.create({name: "Mahayana Temple Buddhist Association", place: [place], age_range: "All" });
+Activity.create({name: "Mahayana Temple Buddhist Association", place: [place], age_range: "All" });
 
 var place = new Place({address: "19 Fulton St", city: "New York", state: "NY", phone: "123-456-7890", location: [40.707119, -74.003602]});
-ThingsToDo.create({name: "South Street Seaport", place: [place], age_range: "All" });
+Activity.create({name: "South Street Seaport", place: [place], age_range: "All" });
 
 var place = new Place({address: "1 Liberty Plz Lbby 2", city: "New York", state: "NY", phone: "123-456-7890", location: [40.709329, -74.013120]});
-ThingsToDo.create({name: "Ground Zero", place: [place], age_range: "All" });
+Activity.create({name: "Ground Zero", place: [place], age_range: "All" });
 
 var place = new Place({address: "1 Albany St", city: "New York", state: "NY", phone: "123-456-7890", location: [40.709189, -74.013157]});
-ThingsToDo.create({name: "National September 11th Memorial & Museum", place: [place], age_range: "All" });
+Activity.create({name: "National September 11th Memorial & Museum", place: [place], age_range: "All" });
 
 var place = new Place({address: "State St & Battery Pl", city: "New York", state: "NY", phone: "123-456-7890", location: [40.704531, -74.014334]});
-ThingsToDo.create({name: "Battery Park", place: [place], age_range: "All" });
+Activity.create({name: "Battery Park", place: [place], age_range: "All" });
 
 var place = new Place({address: "4 S St", city: "New York", state: "NY", phone: "123-456-7890", location: [40.729125, -73.989650]});
-ThingsToDo.create({name: "Staten Island Ferry Whitehall Terminal", place: [place], age_range: "All" });
+Activity.create({name: "Staten Island Ferry Whitehall Terminal", place: [place], age_range: "All" });
 
 var place = new Place({address: "65 Bayard St", city: "New York", state: "NY", phone: "123-456-7890", location: [40.715323, -73.998190]});
-ThingsToDo.create({name: "Chinatown Ice Cream Factory", place: [place], age_range: "All" });
+Activity.create({name: "Chinatown Ice Cream Factory", place: [place], age_range: "All" });
 
 var place = new Place({address: "434 Lafayette St", city: "New York", state: "NY", phone: "123-456-7890", location: [40.729373, -73.992104]});
-ThingsToDo.create({name: "Blue Man Group", place: [place], age_range: "All" });
+Activity.create({name: "Blue Man Group", place: [place], age_range: "All" });
 
 var place = new Place({address: "244 5th Ave", city: "New York", state: "NY", phone: "123-456-7890", location: [40.744610, -73.987708]});
-ThingsToDo.create({name: "Scott's Pizza Tours", place: [place], age_range: "All" });
+Activity.create({name: "Scott's Pizza Tours", place: [place], age_range: "All" });
 
 var place = new Place({address: "103 Prince St", city: "New York", state: "NY", phone: "123-456-7890", location: [40.724918, -73.999144]});
-ThingsToDo.create({name: "Apple Store", place: [place], age_range: "All" });
+Activity.create({name: "Apple Store", place: [place], age_range: "All" });
 
 var place = new Place({address: "Pier 1", city: "New York", state: "NY", phone: "123-456-7890", location: [40.702225, -73.996563]});
-ThingsToDo.create({name: "Brooklyn Bridge Park", place: [place], age_range: "All" });
+Activity.create({name: "Brooklyn Bridge Park", place: [place], age_range: "All" });
 
 var place = new Place({address: "Ellis Island", city: "New York", state: "NY", phone: "123-456-7890", location: [40.699297, -74.040317]});
-ThingsToDo.create({name: "Ellis Island Immigration Museum", place: [place], age_range: "All" });
+Activity.create({name: "Ellis Island Immigration Museum", place: [place], age_range: "All" });
 
 var place = new Place({address: "1 Washington Sq E", city: "New York", state: "NY", phone: "123-456-7890", location: [40.732204, -73.998649]});
-ThingsToDo.create({name: "Washington Square Park", place: [place], age_range: "All" });
+Activity.create({name: "Washington Square Park", place: [place], age_range: "All" });
 
 var place = new Place({address: "Union Sq & W 14th St", city: "New York", state: "NY", phone: "123-456-7890", location: [40.733615, -73.987995]});
-ThingsToDo.create({name: "Union Square Holiday Market", place: [place], age_range: "All" });
+Activity.create({name: "Union Square Holiday Market", place: [place], age_range: "All" });
 
 var place = new Place({address: "828 Broadway", city: "New York", state: "NY", phone: "123-456-7890", location: [40.733274, -73.990870]});
-ThingsToDo.create({name: "Strand Bookstore", place: [place], age_range: "All" });
+Activity.create({name: "Strand Bookstore", place: [place], age_range: "All" });
 
 console.log("Finished inserting data");
 console.log("Control-C to quit");

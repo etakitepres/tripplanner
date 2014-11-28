@@ -7,10 +7,10 @@ var models = require('../models');
 router.get('/', function(req, res) {
 	models.Hotel.find(function(err, hotels) {
 		models.Restaurant.find(function(err, restaurants) {
-			models.ThingsToDo.find(function(err, thingstodo) {
+			models.Activity.find(function(err, activities) {
 				res.render('index', 
 					{ hotels:hotels, restaurants:restaurants, 
-						thingstodo:thingstodo, title: 'Trip Planner' });
+						activities:activities, title: 'Trip Planner' });
 			});
 		});
 
