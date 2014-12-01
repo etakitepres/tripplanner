@@ -5,8 +5,8 @@ var dayPicker = function() {
 
 	var daySwitcher = function(){
 		var daynamesplit = $(this).text().split(" ");
-		currentDay = Number(daynamesplit[1]);
 		clearDay();
+		currentDay = Number(daynamesplit[1]);
 		setDay();
 		$("#day-buttons button").removeClass("btn-primary").addClass("btn-default");
 		$(this).removeClass("btn-default").addClass("btn-primary");
@@ -30,19 +30,30 @@ function clearDay() {
 	$("#hotel-list").text("");
 	$("#activity-list").text("");
 	$("#restaurant-list").text("");
+	markerSet(null);
 }
 
 function setDay() {
 	$("#plan-daynum").text("Day " + currentDay);
 	$.each(plan[currentDay].Hotels, function(key, hotel){
-		$("#hotel-list").append("<li>" + hotel + "</li>");
+		$("#hotel-list").append("<li>" + hotel.name + "</li>");
 	});
 	$.each(plan[currentDay].Activities, function(key, activity){
-		$("#activity-list").append("<li>" + activity + "</li>");
+		$("#activity-list").append("<li>" + activity.name + "</li>");
 	});
 	$.each(plan[currentDay].Restaurants, function(key, restaurant){
-		$("#restaurant-list").append("<li>" + restaurant + "</li>");
+		$("#restaurant-list").append("<li>" + restaurant.name + "</li>");
 	});
+	markerSet(map);
+}
+
+function markerSet(map) {
+	var day = plan[currentDay];
+	for (var key in day) {
+		day[key].forEach(function(thing) {
+			thing.marker.setMap(map);
+		})
+	}
 }
 
 

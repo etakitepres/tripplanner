@@ -13,47 +13,75 @@ function addThing() {
 		return obj.place[0].location;
 	}
 
+	var findAndDelete = function(name, array) {
+		var obj;
+		array.forEach(function(el, index, full_arr){
+			if (el.name == name) {
+				el.marker.setMap(null);
+				full_arr.splice(index, 1);
+			}
+		});
+
+	}
+
+	var deleteButton = "<button class='btn btn-warning btn-xs delete'>Delete</button>";
+
 	$("#hotel-picker").submit(function(e) {
 		var hotel = $("#hotel-picker option:selected").text();
-		plan[currentDay].Hotels.push(hotel);
 		var location = finder(hotel, all_hotels);
-		// var deleteButton = "<button class='btn btn-warning btn-xs delete'>Delete</button>";
 		e.preventDefault();
-		$("#hotel-list").append("<li>" + hotel + /*deleteButton + */"</li>");
+		$("#hotel-list").append("<li><span>" + hotel + "</span> " + deleteButton + "</li>");
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(location[0], location[1]),
 			map: map, 
 			title: hotel
 		});
-		// $(".delete").click(function() {
-		// 	$(this).parent().remove();
-		// });
+		plan[currentDay].Hotels.push({"name": hotel, "marker":marker});
+		
+		$("#hotel-list .delete").click(function() {
+			var parent = $(this).parent();
+			var name = parent.find("span").text();
+			findAndDelete(name, plan[currentDay].Hotels);
+			parent.remove();
+		});
 
 	})
 
 	$("#activity-picker").submit(function(e) {
 		var activity = $("#activity-picker option:selected").text();
-		plan[currentDay].Activities.push(activity);
 		var location = finder(activity, all_activities);
 		e.preventDefault();
-		$("#activity-list").append("<li>" + activity + "</li>");
+		$("#activity-list").append("<li><span>" + activity + "</span> " + deleteButton + "</li>");
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(location[0], location[1]),
 			map: map, 
 			title: activity
 		});
+		plan[currentDay].Activities.push({"name": activity, "marker":marker});
+		$("#activity-list .delete").click(function() {
+			var parent = $(this).parent();
+			var name = parent.find("span").text();
+			findAndDelete(name, plan[currentDay].Activities);
+			parent.remove();
+		});
 	})
 
 	$("#restaurant-picker").submit(function(e) {
 		var restaurant = $("#restaurant-picker option:selected").text();
-		plan[currentDay].Restaurants.push(restaurant);
 		var location = finder(restaurant, all_restaurants);
 		e.preventDefault();
-		$("#restaurant-list").append("<li>" + restaurant + "</li>");
+		$("#restaurant-list").append("<li><span>" + restaurant + "</span> " + deleteButton + "</li>");
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(location[0], location[1]),
 			map: map, 
 			title: restaurant
+		});
+		plan[currentDay].Restaurants.push({"name": restaurant, "marker":marker});
+		$("#restaurant-list .delete").click(function() {
+			var parent = $(this).parent();
+			var name = parent.find("span").text();
+			findAndDelete(name, plan[currentDay].Restaurants);
+			parent.remove();
 		});
 	})
 
@@ -61,5 +89,5 @@ function addThing() {
 
 
 $(document).ready(function() {
-  addThing();
+	addThing();
 });
