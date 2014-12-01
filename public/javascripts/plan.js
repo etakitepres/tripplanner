@@ -30,7 +30,7 @@ function addThing() {
 		var hotel = $("#hotel-picker option:selected").text();
 		var location = finder(hotel, all_hotels);
 		e.preventDefault();
-		$("#hotel-list").append("<li><span>" + hotel + "</span> " + deleteButton + "</li>");
+		$("#hotel-list").append("<li class='list-group-item'><span>" + hotel + "</span> " + deleteButton + "</li>");
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(location[0], location[1]),
 			map: map, 
@@ -46,7 +46,7 @@ function addThing() {
 		var activity = $("#activity-picker option:selected").text();
 		var location = finder(activity, all_activities);
 		e.preventDefault();
-		$("#activity-list").append("<li><span>" + activity + "</span> " + deleteButton + "</li>");
+		$("#activity-list").append("<li class='list-group-item'><span>" + activity + "</span> " + deleteButton + "</li>");
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(location[0], location[1]),
 			map: map, 
@@ -60,7 +60,7 @@ function addThing() {
 		var restaurant = $("#restaurant-picker option:selected").text();
 		var location = finder(restaurant, all_restaurants);
 		e.preventDefault();
-		$("#restaurant-list").append("<li><span>" + restaurant + "</span> " + deleteButton + "</li>");
+		$("#restaurant-list").append("<li class='list-group-item'><span>" + restaurant + "</span> " + deleteButton + "</li>");
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(location[0], location[1]),
 			map: map, 
