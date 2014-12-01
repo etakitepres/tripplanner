@@ -17,13 +17,17 @@ function addThing() {
 		var hotel = $("#hotel-picker option:selected").text();
 		plan[currentDay].Hotels.push(hotel);
 		var location = finder(hotel, all_hotels);
+		// var deleteButton = "<button class='btn btn-warning btn-xs delete'>Delete</button>";
 		e.preventDefault();
-		$("#hotel-list").append("<li>" + hotel + "</li>");
+		$("#hotel-list").append("<li>" + hotel + /*deleteButton + */"</li>");
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(location[0], location[1]),
 			map: map, 
 			title: hotel
 		});
+		// $(".delete").click(function() {
+		// 	$(this).parent().remove();
+		// });
 
 	})
 
