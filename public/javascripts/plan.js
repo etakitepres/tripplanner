@@ -1,3 +1,6 @@
+var plan = {1:{"Hotels":[], "Activities":[], "Restaurants":[]}};
+
+
 function addThing() {
 
 	var finder = function(name, array) {
@@ -12,6 +15,7 @@ function addThing() {
 
 	$("#hotel-picker").submit(function(e) {
 		var hotel = $("#hotel-picker option:selected").text();
+		plan[currentDay].Hotels.push(hotel);
 		var location = finder(hotel, all_hotels);
 		e.preventDefault();
 		$("#hotel-list").append("<li>" + hotel + "</li>");
@@ -25,6 +29,7 @@ function addThing() {
 
 	$("#activity-picker").submit(function(e) {
 		var activity = $("#activity-picker option:selected").text();
+		plan[currentDay].Activities.push(activity);
 		var location = finder(activity, all_activities);
 		e.preventDefault();
 		$("#activity-list").append("<li>" + activity + "</li>");
@@ -37,6 +42,7 @@ function addThing() {
 
 	$("#restaurant-picker").submit(function(e) {
 		var restaurant = $("#restaurant-picker option:selected").text();
+		plan[currentDay].Restaurants.push(restaurant);
 		var location = finder(restaurant, all_restaurants);
 		e.preventDefault();
 		$("#restaurant-list").append("<li>" + restaurant + "</li>");
