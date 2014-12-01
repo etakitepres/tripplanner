@@ -6,6 +6,8 @@ var dayPicker = function() {
 	var daySwitcher = function(){
 		var daynamesplit = $(this).text().split(" ");
 		currentDay = Number(daynamesplit[1]);
+		clearDay();
+		setDay();
 		$("#day-buttons button").removeClass("btn-primary").addClass("btn-default");
 		$(this).removeClass("btn-default").addClass("btn-primary");
 	}
@@ -30,7 +32,18 @@ function clearDay() {
 	$("#restaurant-list").text("");
 }
 
-function setDay() {}
+function setDay() {
+	$("#plan-daynum").text("Day " + currentDay);
+	$.each(plan[currentDay].Hotels, function(key, hotel){
+		$("#hotel-list").append("<li>" + hotel + "</li>");
+	});
+	$.each(plan[currentDay].Activities, function(key, activity){
+		$("#activity-list").append("<li>" + activity + "</li>");
+	});
+	$.each(plan[currentDay].Restaurants, function(key, restaurant){
+		$("#restaurant-list").append("<li>" + restaurant + "</li>");
+	});
+}
 
 
 
