@@ -34,16 +34,24 @@ function clearDay() {
 }
 
 function setDay() {
+	var deleteButton = "<button class='btn btn-warning btn-xs delete'>x</button>";
+
 	$("#plan-daynum").text("Day " + currentDay);
 	$.each(plan[currentDay].Hotels, function(key, hotel){
-		$("#hotel-list").append("<li>" + hotel.name + "</li>");
-	});
+		$("#hotel-list").append("<li><span>" + hotel.name + "</span> " + deleteButton + "</li>");
+	});	
+	setDeleteButton("#hotel-list", "Hotels");
+
 	$.each(plan[currentDay].Activities, function(key, activity){
-		$("#activity-list").append("<li>" + activity.name + "</li>");
+		$("#activity-list").append("<li><span>" + activity.name + "</span> " + deleteButton + "</li>");
 	});
+	setDeleteButton("#activity-list", "Activities");
+
 	$.each(plan[currentDay].Restaurants, function(key, restaurant){
-		$("#restaurant-list").append("<li>" + restaurant.name + "</li>");
+		$("#restaurant-list").append("<li><span>" + restaurant.name + "</span> " + deleteButton + "</li>");
 	});
+	setDeleteButton("#restaurant-list", "Restaurants");
+
 	markerSet(map);
 }
 
@@ -59,5 +67,5 @@ function markerSet(map) {
 
 
 $(document).ready(function() {
-  dayPicker();
+	dayPicker();
 });

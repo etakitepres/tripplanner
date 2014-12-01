@@ -1,30 +1,30 @@
 var plan = {1:{"Hotels":[], "Activities":[], "Restaurants":[]}};
 
 
+function finder(name, array) {
+	var obj;
+	array.forEach(function(el){
+		if (el.name == name) {
+			obj = el;
+		}
+	});
+	return obj.place[0].location;
+}
+
+function findAndDelete(name, array) {
+	var obj;
+	array.forEach(function(el, index, full_arr){
+		if (el.name == name) {
+			el.marker.setMap(null);
+			full_arr.splice(index, 1);
+		}
+	});
+}
+
 function addThing() {
 
-	var finder = function(name, array) {
-		var obj;
-		array.forEach(function(el){
-			if (el.name == name) {
-				obj = el;
-			}
-		});
-		return obj.place[0].location;
-	}
 
-	var findAndDelete = function(name, array) {
-		var obj;
-		array.forEach(function(el, index, full_arr){
-			if (el.name == name) {
-				el.marker.setMap(null);
-				full_arr.splice(index, 1);
-			}
-		});
-
-	}
-
-	var deleteButton = "<button class='btn btn-warning btn-xs delete'>Delete</button>";
+	var deleteButton = "<button class='btn btn-warning btn-xs delete'>x</button>";
 
 	$("#hotel-picker").submit(function(e) {
 		var hotel = $("#hotel-picker option:selected").text();
@@ -38,12 +38,7 @@ function addThing() {
 		});
 		plan[currentDay].Hotels.push({"name": hotel, "marker":marker});
 		
-		$("#hotel-list .delete").click(function() {
-			var parent = $(this).parent();
-			var name = parent.find("span").text();
-			findAndDelete(name, plan[currentDay].Hotels);
-			parent.remove();
-		});
+		setDeleteButton("#hotel-list", "Hotels");
 
 	})
 
@@ -58,12 +53,7 @@ function addThing() {
 			title: activity
 		});
 		plan[currentDay].Activities.push({"name": activity, "marker":marker});
-		$("#activity-list .delete").click(function() {
-			var parent = $(this).parent();
-			var name = parent.find("span").text();
-			findAndDelete(name, plan[currentDay].Activities);
-			parent.remove();
-		});
+		setDeleteButton("#activity-list", "Activities");
 	})
 
 	$("#restaurant-picker").submit(function(e) {
@@ -77,14 +67,18 @@ function addThing() {
 			title: restaurant
 		});
 		plan[currentDay].Restaurants.push({"name": restaurant, "marker":marker});
-		$("#restaurant-list .delete").click(function() {
-			var parent = $(this).parent();
-			var name = parent.find("span").text();
-			findAndDelete(name, plan[currentDay].Restaurants);
-			parent.remove();
-		});
+		setDeleteButton("#restaurant-list", "Restaurants");
 	})
 
+}
+
+function setDeleteButton(listId, listName) {
+	$(listId + " .delete").click(function() {
+		var parent = $(this).parent();
+		var name = parent.find("span").text();
+		findAndDelete(name, plan[currentDay][listName]);
+		parent.remove();
+	});
 }
 
 
