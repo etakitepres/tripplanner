@@ -1,3 +1,5 @@
+var map;
+
 function initialize_gmaps() {
   // debugger;
   // initialize new google maps LatLng object
@@ -14,12 +16,12 @@ function initialize_gmaps() {
   var map_canvas_obj = document.getElementById("map-canvas");
  
   // initialize a new Google Map with the options
-  var map = new google.maps.Map(map_canvas_obj, mapOptions);
+  map = new google.maps.Map(map_canvas_obj, mapOptions);
  
   // Add the marker to the map
   var marker = new google.maps.Marker({
     position: myLatlng,
-    title:"Hello World!"
+    title:"Fullstack Academy"
   });
  
   // Add the marker to the map by calling setMap()
